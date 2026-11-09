@@ -86,13 +86,76 @@ Suppose a stock has rallied sharply and its call options appear attractive. The 
 
 **Proposed output:** an auditable research memo, not a guaranteed prediction or an automatic buy/sell order.
 
-## Relationship to the other projects
+## What problem is being solved?
 
-- **Project Matrix:** deeply studies companies, financial and operational performance, and turnaround or value-creation opportunities. Its findings can inform underlying-company assessment.
-- **API Intelligence:** helps discover and verify the datasets, filings, and tools used in the analysis.
-- **F&O Analyst:** evaluates market contracts, portfolio exposure, and strategy-level risk. Underwriting Engine focuses more on **whether the underlying thesis is supported**; F&O Analyst focuses on **what a particular derivative position would do to the portfolio**.
+**Asset price is an observation; asset quality and thesis strength require investigation.** A contract may be liquid and attractively priced relative to a model yet still express a weak or poorly understood view about the underlying.
 
-The projects may share data and calculations, but their questions and outputs are different.
+The core failure mode to investigate is **taking exposure without a sufficiently documented thesis**: treating market moves as explanations, relying on stale figures, ignoring material events, or confusing a fundamental valuation with a short-term options payoff.
+
+This project separates three questions:
+
+1. **Asset:** What is the underlying and what fundamentally or economically drives its behavior?
+2. **Thesis:** What evidence supports an expected scenario; what contradicts it; how sensitive is it to assumptions?
+3. **Instrument fit:** If a derivative is being considered, is its horizon and risk profile consistent with that thesis?
+
+The third question intersects with F&O Analyst, but **contract pricing, portfolio Greeks, and strategy selection principally belong there**. This engine should not duplicate the entire options workstation.
+
+### Comparison with existing approaches
+
+| Alternative | Strength | Research gap to test |
+| --- | --- | --- |
+| Price chart and market commentary | Fast view of market movements | Little evidence of underlying economic value or a falsifiable thesis |
+| Equity research and company filings | Detailed fundamentals and context | Reconciling sources, assumptions and opposing evidence takes effort |
+| Valuation spreadsheet | Quantified scenarios | Can hide source uncertainty and the decision narrative |
+| Derivatives payoff calculator | Instrument-level mechanics | Does not establish why the underlying thesis should hold |
+
+**First user:** me as a personal investment researcher. This is not a validated institutional underwriting workflow, a credit approval system, or an investment adviser.
+
+## Outputs a reviewer should be able to audit
+
+The target artifact is a compact **Underlying Asset & Thesis Assessment** with:
+
+- Asset and market identification, scope, analysis date, and intended horizon.
+- Evidence register: primary sources, periods, timestamps, unit conventions, and discrepancies.
+- Driver map: company/industry factors for stocks; composition and economic/market drivers for indexes.
+- Three-part thesis: evidence for it, evidence against it, and crucial unknowns.
+- Conditional scenarios with major assumptions, plausible catalysts and invalidation conditions.
+- Price versus estimated fundamental value or scenario range **when such a comparison is justified**.
+- Confidence and data sufficiency assessment, without made-up probabilities.
+- Decision state: *insufficient evidence / reject thesis / investigate further / conditional consideration*.
+- Optional handoff notes to a separate derivatives risk review—not an order or a buy signal.
+
+## Metrics: quality before automation
+
+| Measure | Definition / test | Failure it helps detect |
+| --- | --- | --- |
+| Evidence traceability | Portion of key assertions linked to dated primary or clearly classified secondary sources | Unverifiable stories |
+| Fact reconciliation | Material figures reproduced from published statements or official feeds | Incorrect units, periods or inputs |
+| Thesis falsifiability | Portion of claims with a clear contradictory observation or invalidation test | Non-testable conviction |
+| Risk coverage | Documented coverage of material financial, operational, macro, event and liquidity risks | Missing downside |
+| Scenario reproducibility | Independent reviewer can recreate key scenarios using disclosed inputs | Hidden model judgment |
+| Model sensitivity | How much the conclusion changes when the top uncertain assumptions are stressed | False precision |
+| Time to reviewed memo | Analyst hours from scoped question to a signed-off research packet | Whether the workflow reduces groundwork |
+| Guardrail breaches | Unsourced prices, undisclosed model assumptions, fabricated probabilities or automatic trades | Unacceptable errors |
+
+These are **planned evaluation measures**, not measured performance. Do not quote an intrinsic-value estimate as an exchange-traded price or claim model correctness without a reference test.
+
+### Potential research hypotheses
+
+- A structured evidence register helps a reviewer find data conflicts earlier than an unstructured note.
+- Separating **observed price**, **model-estimated value**, and **scenario payoff** reduces erroneous conclusions.
+- Explicit contradicting evidence improves the discipline of a thesis decision.
+- A standardized handoff to F&O Analyst (if ever built) reduces repeated context gathering without coupling the two products.
+
+Each hypothesis should be tested against a simple manual memo before investing in an AI agent.
+
+## Clear boundaries and project relationship
+
+This is **capital-markets research focused on underwriting an underlying asset or investment thesis**. It is closest to **F&O Analyst**, which handles contracts, payoff, portfolio exposure and strategy-risk mechanics. They may exchange a human-reviewed research memo in the future; there is **no current software integration or mandatory sequence**.
+
+**Project Matrix is a separate business diagnosis / turnaround / value-creation initiative.** It is not a component of this engine and should not appear in a live product pipeline. Its company research might become useful background someday, but that is explicitly **out of scope now**.
+
+**API Intelligence** is an optional, independent concept for discovering, assessing and documenting reliable data sources. It is not a required operational dependency.
 
 ## First practical milestone
 
