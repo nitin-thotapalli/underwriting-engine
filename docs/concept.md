@@ -1,5 +1,7 @@
 # Underwriting Engine — Original Concept & Scope
 
+> **Current direction (superseding the generic proposal below):** The original note said only “Underwriting engine,” so the earlier credit/insurance application workflow was a speculative interpretation. The [README](../README.md) now defines **investment/underlying-asset thesis assessment for personal capital-markets research**, most closely related to F&O Analyst. Loan approval, insurance eligibility and applicant scoring are **not in scope**. The original brainstorm below is preserved as historical context, not as the current product requirement.
+
 ## Original idea (from Notion)
 
 > Underwriting engine
