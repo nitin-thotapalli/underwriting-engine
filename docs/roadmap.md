@@ -1,44 +1,37 @@
-# Underwriting Engine — Development Roadmap
+# Underwriting Engine — Research & Development Roadmap
 
-**State:** Proposed, not scheduled. Milestones below describe exploratory work, not completed tasks.
+**Status:** Proposed capital-markets research experiments. Nothing has been deployed or validated.
 
-## 01. Choose the underwriting domain and clearly define the decision being supported.
+| Gate | Deliverable | Evidence needed to continue |
+| --- | --- | --- |
+| 01 — Scope | One underlying asset, horizon, hypothesis and intended decision | Decision clearly separate from derivative contract selection |
+| 02 — Evidence | Source register of filings/market inputs with verification dates | Material fields, units, periods and conflicts recorded |
+| 03 — Driver map | Business/industry or index composition analysis | Distinguishes observed drivers from speculative explanations |
+| 04 — Thesis | Supporting and contradicting evidence, catalysts, invalidators | Thesis is falsifiable and has an evidence-sufficiency test |
+| 05 — Scenarios | Reproducible value or scenario range with sensitivities | Reviewer can recalculate and challenge major assumptions |
+| 06 — Risk | Downside/event/liquidity risk register and critical unknowns | No major risk is silently omitted; uncertainty visible |
+| 07 — Decision memo | Investigate / reject / conditional consideration | Evidence-linked reasoning with explicit human sign-off |
+| 08 — Product review | Compare manual memo vs prototype for value | Time, correctness, traceability, rework and upkeep assessed |
 
-- [ ] Document evidence or outputs.
-- [ ] Review assumptions and known limitations before advancing.
+## Initial acceptance checks
 
-## 02. Identify the intended user, jurisdiction, policy owners and compliance constraints.
+- [ ] Define **asset vs instrument** and avoid treating one price as the other.
+- [ ] Use real, licensable primary references or clearly labelled test data.
+- [ ] Reconcile material numbers and support all crucial assertions with sources.
+- [ ] Show a downside scenario and what would invalidate the thesis.
+- [ ] Present estimated values as ranges conditional on model assumptions.
+- [ ] Independently review calculations and keep a change log.
+- [ ] Refuse to conclude where evidence is insufficient.
+- [ ] Do not connect a broker, place trades or auto-approve any transaction.
 
-- [ ] Document evidence or outputs.
-- [ ] Review assumptions and known limitations before advancing.
+## Candidate success measures
 
-## 03. Write a sample decision policy and a data dictionary using synthetic inputs.
+Source traceability, independent reconciliation of facts, reproducibility of scenarios, completeness of downside risks, falsifiability of theses, and time to a reviewed memo. Compare with a manual baseline; no measured speed or investment returns have been demonstrated.
 
-- [ ] Document evidence or outputs.
-- [ ] Review assumptions and known limitations before advancing.
+## Non-goals
 
-## 04. Design reason codes, audit events and human escalation paths.
+Credit and insurance application processing; loan approval; regulatory policy engines; applicant scoring; live derivative order routing; full portfolio risk analytics (a separate F&O Analyst concern); guaranteed price forecasts.
 
-- [ ] Document evidence or outputs.
-- [ ] Review assumptions and known limitations before advancing.
+## Decision to make later
 
-## 05. Create a small deterministic rules prototype only after policy is defined.
-
-- [ ] Document evidence or outputs.
-- [ ] Review assumptions and known limitations before advancing.
-
-## 06. Test edge cases, consistency and fairness/privacy concerns with domain review.
-
-- [ ] Document evidence or outputs.
-- [ ] Review assumptions and known limitations before advancing.
-
-## Definition of a useful first prototype
-
-A user can inspect one grounded example end-to-end, understand its inputs and assumptions, reproduce the output, and identify what is still unknown. A prototype is not a production-ready or fully validated system.
-
-## Open decisions
-
-- [ ] What type of underwriting: loans, insurance, merchant, investment or another domain?
-- [ ] Who has authority to approve/decline, and is the system advisory or decisional?
-- [ ] Which jurisdiction and regulations apply?
-- [ ] What information is legally and ethically permitted to inform decisions?
+Whether this is a useful stand-alone personal research workflow, whether it should remain a component of one's personal F&O research process, or whether to stop after a well-documented notebook. A commercial product is not assumed.
