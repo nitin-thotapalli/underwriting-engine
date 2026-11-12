@@ -4,8 +4,6 @@
 
 Underwriting Engine is an independent research concept for **evaluating an asset or investment opportunity before taking exposure to it**. In the current direction, the first use case is to assess the **underlying asset behind a proposed futures or options position**—what drives its value, how it is performing, what could change, and what risks are not reflected in a simple market quote.
 
-**Status:** Concept / research. No operational underwriting system, validated valuation engine, broker integration, or investment recommendation service is claimed.
-
 ## Why Underwriting Engine?
 
 A quoted price tells me **what the market currently offers**, not necessarily **what an asset is worth, why its price is moving, or whether the risk is justified**.
